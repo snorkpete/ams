@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130802090601) do
+ActiveRecord::Schema.define(version: 20130804200515) do
+
+  create_table "announcements", force: true do |t|
+    t.string   "description"
+    t.text     "details"
+    t.string   "status",      default: "new"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
