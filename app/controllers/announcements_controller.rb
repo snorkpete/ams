@@ -26,7 +26,9 @@ class AnnouncementsController < ApplicationController
   def push
     respond_to do |format|
       # push announcement here using GCM
-      if GCM.push(@announcement)
+      gateway = GcmGateway.new
+      @gcm_response = gateway.send_notification(@announcement) 
+      if @gcm_response
         format.html { redirect_to @announcement, notice: 'Announcement was sent to all registered devices.' }
       else
         format.html { render action: 'show', error:'Announcement not sent' }

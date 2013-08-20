@@ -40,7 +40,9 @@ RSpec.configure do |config|
   config.order = "random"
   
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
+    #DatabaseCleaner.strategy = :truncation
+    # changed to transaction to fix bug in truncation method (missing postgresql_version method)
+    DatabaseCleaner.strategy = :transaction
   end
   config.before(:each) do
     DatabaseCleaner.start

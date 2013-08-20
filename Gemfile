@@ -15,6 +15,10 @@ gem 'figaro'
 gem 'puma'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+
+#gem 'httparty'  #only used to handcraft gcm requests
+gem 'pushmeup'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

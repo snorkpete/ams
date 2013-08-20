@@ -15,6 +15,11 @@
   <%= @announcement.status %>
 </p>
 
+<p>
+  <strong>Response:</strong>
+  <%= @gcm_response %>
+</p>
+
 <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
 <%= link_to 'Push to Devices', push_announcement_path(@announcement), method: 'post' %> |
 <%= link_to 'Reset', reset_announcement_path(@announcement), method: 'post' %> |
