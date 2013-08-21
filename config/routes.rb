@@ -1,4 +1,5 @@
 Ams::Application.routes.draw do
+  get "devices/register"
   resources :announcements do
     member do
       post 'push'

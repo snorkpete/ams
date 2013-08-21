@@ -11,12 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130804200515) do
+ActiveRecord::Schema.define(version: 20130821013659) do
 
   create_table "announcements", force: true do |t|
     t.string   "description"
     t.text     "details"
     t.string   "status",      default: "new"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "devices", force: true do |t|
+    t.string   "regid"
+    t.integer  "mobile_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "devices", ["mobile_user_id"], name: "index_devices_on_mobile_user_id"
+
+  create_table "mobile_users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
