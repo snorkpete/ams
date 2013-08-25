@@ -1,0 +1,29 @@
+<h1>Registered Devices</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Device Owner Name</th>
+      <th>Device Email</th>
+      <th>Reg ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+      <%# TODO: to fix this hack %>
+        <td><%= device.mobile_user.name %></td>
+        <td><%= device.mobile_user.email %></td>
+        <td><%= device.regid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Go to Announcements', announcements_path %>

@@ -2,19 +2,28 @@
 class DevicesController < ApplicationController
   #before_action :set_announcement, only: [:register]
 
-  # POST /devices/register
-  def register
-    respond_to do |format|
-      
-      registration_service = DeviceRegistrationService.new
-      reg_response = registration_service.register(registration_params)
+  # cannot use the rails authentication token from android, so skip it for api registration requests
+  skip_before_filter :verify_authenticity_token, only: [:register]
+  
+  # GET /device
+  # GET /device.json
+  def index
+    @devices = Device.all
+  end
 
-      if @reg_response
-        format.json { render json: reg_response, status: :created }
-      else
-        format.json { render json: reg_response, status: :unprocessable_entity }
-      end
-    end
+  # POST /devices/register
+  # TODO: move this function into its own separate API::Devices controller
+  # API call - will only return json
+  def register
+      
+     registration_service = DeviceRegistrationService.new
+     reg_response = registration_service.register(registration_params)
+
+     if reg_response
+       render json: reg_response, status: :ok
+     else
+       render json: reg_response, status: :unprocessable_entity
+     end
   end
   #
 

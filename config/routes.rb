@@ -1,5 +1,14 @@
 Ams::Application.routes.draw do
-  get "devices/register"
+
+  resources :devices do
+    collection do
+      
+      # Adding of new devices' registration id 
+      #- used by android app to register for GCM messages
+      post 'register' 
+    end
+  end
+
   resources :announcements do
     member do
       post 'push'
