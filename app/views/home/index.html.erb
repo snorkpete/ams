@@ -1,4 +1,49 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+
+<ul>
+  <li><%= link_to 'Go to Announcments', announcements_path %></li>
+  <li><%= link_to 'Go to Devices', devices_path %></li>
+</ul>
+
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Please remember to change your password if you haven't yet done so.
+</div>
+
+<div>
+  <p>
+    <%= link_to 'Download the most recent version of the AMS app', '#'  %>
+  </p>
+  <p>
+    Use the link above to download the most recent version of the android application.
+  </p> 
+  <p>
+    To install, visit the website on your phone, log in, and click the 'Download App' link to start the download. Once it is downloaded, open the downloaded file to install.
+  </p>
+  <div class="alert">
+    <p>
+    Note that you must change the settings of your device to allow installation of non-market apps.<br/><br/>
+      Ensure that the setting in <strong>Settings --> Security --> Unknown Sources</strong> is checked.. 
+    </p>
+  </div>
+</div>
+
+<h2> Current Features</h2>
+
+<div class="well well-large">
+  <h3>Web App</h3>
+  <ul>
+    <li>Can create, edit and delete announcements</li>
+    <li>Can accept registrations from the mobile app to receive announcement notifications</li>
+    <li>Can push announcments to all registered devices</li>
+  </ul>
+</div>
+
+<div class="well well-large">
+  <h3>Mobile App</h3>
+  <ul>
+    <li>Can register to receive notifications of announcements</li>
+    <li>Will display any announcement sent as an Android notification (shows up as a help icon)</li>
+  </ul>
+</div>
+
