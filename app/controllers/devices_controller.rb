@@ -2,6 +2,8 @@
 class DevicesController < ApplicationController
   #before_action :set_announcement, only: [:register]
 
+  before_filter :authenticate_user!, except: [:register]
+
   # cannot use the rails authentication token from android, so skip it for api registration requests
   skip_before_filter :verify_authenticity_token, only: [:register]
   
@@ -17,12 +19,12 @@ class DevicesController < ApplicationController
   def register
       
      registration_service = DeviceRegistrationService.new
-     reg_response = registration_service.register(registration_params)
+     registration_response = registration_service.register(registration_params)
 
-     if reg_response
-       render json: reg_response, status: :ok
+     if registration_response[:success]
+       render json: registration_response, status: :ok
      else
-       render json: reg_response, status: :unprocessable_entity
+       render json: registration_response, status: :bad_request
      end
   end
   #
@@ -31,6 +33,10 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registration_params
-      params.require(:registration).permit(:regid, :name, :email)
+      if params[:registration]
+        params.require(:registration).permit(:regid, :name, :email) 
+      else
+        { }
+      end
     end
 end
