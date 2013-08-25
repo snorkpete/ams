@@ -39,4 +39,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'
+  gem 'faker'               #generates fake names easily
+  gem 'launchy'             #launches the web browser to render the currently executing page from a spec
+  gem 'selenium-webdriver'  #test javascript-based pages
 end
