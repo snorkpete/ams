@@ -10,7 +10,8 @@ class GcmGateway
     announcement = { 
                      announcement_text: announcement.description, 
                      announcement_details:announcement.details,
-                     announcement_id:announcement.id
+                     announcement_id:announcement.id,
+                     announcement_created_at:announcement.created_at.to_json
                     }
 
     # send the GCM message to groups of 1000 devices at a time
