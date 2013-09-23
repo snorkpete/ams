@@ -1,5 +1,10 @@
 Ams::Application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      get 'announcements/:last_date' => "announcements#index"
+    end
+  end
   resources :devices do
     collection do
       
